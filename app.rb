@@ -4,6 +4,7 @@ require_relative "lib/product"
 require_relative "lib/transaction"
 
 # PRODUCTS
+
 # Product.new(title: "LEGO Iron Man vs. Ultron", price: 22.99, stock: 55)
 # Product.new(title: "Nano Block Empire State Building", price: 49.99, stock: 12)
 # Product.new(title: "LEGO Firehouse Headquarter", price: 199.99, stock: 0)
@@ -22,7 +23,8 @@ require_relative "lib/transaction"
 # nanoblock.in_stock? # Should return true
 # firehouse.in_stock? # Should return false
 
-# products_in_stock = Product.in_stock # Should return an array of all products with a stock greater than zero
+# products_in_stock = Product.in_stock
+# Should return an array of all products with a stock greater than zero
 # products_in_stock.include?(nanoblock) # Should return true
 # products_in_stock.include?(firehouse) # Should return false
 
@@ -38,7 +40,7 @@ require_relative "lib/transaction"
 
 # walter = Customer.find_by_name("Walter Latimer")
 
-# walter.name = "Walter Latimer"
+# walter.name # Should return "Walter Latimer"
 
 # TRANSACTIONS
 
@@ -53,7 +55,7 @@ require_relative "lib/transaction"
 
 # PURCHASES
 
-# julia.purchase(nanoblock)
+# walter.purchase(nanoblock)
 
 # Transaction.all.count # Should return 2
 
