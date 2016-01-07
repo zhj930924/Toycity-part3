@@ -48,7 +48,7 @@ require_relative "lib/transaction"
 
 # transaction.id # Should return 1
 # transaction.product == nanoblock # Should return true
-# transaction.prodcut == firehouse # Should return false
+# transaction.product == firehouse # Should return false
 # transaction.customer == walter # Should return true
 
 # nanoblock.stock # Should return 11
