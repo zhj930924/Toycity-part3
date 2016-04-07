@@ -1,6 +1,11 @@
-# lib/product.rb
-
 class Product
-  def initialize(options = {})
+  @@products = []
+
+  def initialize(options={})
+    @@products << self
+  end
+
+  def self.all
+    @@products
   end
 end
