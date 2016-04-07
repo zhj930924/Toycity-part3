@@ -30,6 +30,10 @@ class Product
     products_in_stock
   end
 
+  def reduce_stock
+    @stock -= 1
+  end
+
   private
 
   def add_to_products
