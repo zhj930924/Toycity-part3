@@ -5,10 +5,18 @@ class Transaction
   @@id = 1
 
   def initialize(customer, product, options={})
-    @customer = customer
-    @product = product
-    @id = @@id
-    @@id += 1
+    if product.in_stock?
+      @customer = customer
+      @product = product
+      @id = @@id
+      @@id += 1
+      choose_transaction_type(options)
+    else
+      raise OutOfStockError, "'#{product.title}' is out of stock."
+    end
+  end
+
+  def choose_transaction_type(options)
     if options[:type] == 'return'
       return_transaction
     else
@@ -21,9 +29,7 @@ class Transaction
   end
 
   def self.find(id)
-    @@transactions.each do |transaction|
-      return transaction if transaction.id == id
-    end
+    @@transactions.find { |transaction| transaction.id == id }
   end
 
   private
@@ -34,11 +40,7 @@ class Transaction
   end
 
   def add_to_transactions
-    if @product.in_stock?
-      @product.reduce_stock
-      @@transactions << self
-    else
-      raise OutOfStockError, "'#{@product.title}' is out of stock."
-    end
+    @product.reduce_stock
+    @@transactions << self
   end
 end

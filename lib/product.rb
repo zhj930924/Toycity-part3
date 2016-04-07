@@ -17,19 +17,16 @@ class Product
   end
 
   def self.find_by_title(title)
-    @@products.each do |product|
-      return product if product.title == title
-    end
+    @@products.find { |product| product.title == title }
   end
 
   # return boolean
   def in_stock?
-    @stock > 0 ? true : false
+    @stock > 0
   end
 
   def self.in_stock
-    products_in_stock = @@products.select { |product| product.in_stock? }
-    products_in_stock
+    @@products.select { |product| product.in_stock? }
   end
 
   def reduce_stock
