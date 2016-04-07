@@ -22,6 +22,10 @@ class Customer
     Transaction.new(self, product)
   end
 
+  def return(product)
+    Transaction.new(self, product, type: 'return')
+  end
+
   private
 
   def add_to_customers

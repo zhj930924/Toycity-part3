@@ -61,5 +61,28 @@ puts Transaction.all.count # Should return 2
 transaction2 = Transaction.find(2)
 puts transaction2.product == nanoblock # Should return true
 
-walter.purchase(firehouse)
+# walter.purchase(firehouse)
 # Should return OutOfStockError: 'LEGO Firehouse Headquarter' is out of stock.
+
+# Return
+# Before return
+puts nanoblock.stock # 10
+puts Transaction.all.count # 2
+# Execute return transaction
+walter.return(nanoblock)
+# After return
+puts nanoblock.stock # 11 - increase by 1
+puts Transaction.all.count # 3 - increase by 1
+
+# Promotion
+# Create a special product for Black Friday Sale
+cheap_product = Product.new(title: "Star War Holidy Bundle", price: 99.99, stock: 25, promotion: "Black Friday")
+
+# Is this a joke?
+crazy_product = Product.new(title: "Lego Politicians", price: 999999.99, stock: 999999, promotion: "Fool's day")
+
+# See what happens on Black Friday
+puts "During #{cheap_product.promotion}, you get #{cheap_product.title} for only $#{cheap_product.price}."
+
+# See what happens on Fool's Day
+puts "During #{crazy_product.promotion}, you get #{crazy_product.title} for only $#{crazy_product.price}, but there is only #{crazy_product.stock} left!"

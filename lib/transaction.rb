@@ -4,12 +4,16 @@ class Transaction
   @@transactions = []
   @@id = 1
 
-  def initialize(customer, product)
+  def initialize(customer, product, options={})
     @customer = customer
     @product = product
-    add_to_transactions
     @id = @@id
     @@id += 1
+    if options[:type] == 'return'
+      return_transaction
+    else
+      add_to_transactions
+    end
   end
 
   def self.all
@@ -23,6 +27,11 @@ class Transaction
   end
 
   private
+
+  def return_transaction
+    @product.add_stock
+    @@transactions << self
+  end
 
   def add_to_transactions
     if @product.in_stock?
