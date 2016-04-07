@@ -27,6 +27,11 @@ class Product
     @stock > 0 ? true : false
   end
 
+  def self.in_stock
+    products_in_stock = @@products.select { |product| product.in_stock? }
+    products_in_stock
+  end
+
   private
 
   def add_to_products
