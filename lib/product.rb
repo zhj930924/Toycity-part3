@@ -16,9 +16,7 @@ class Product
 
   def self.find_by_title(title)
     @@products.each do |product|
-      if product.title == title
-        return product
-      end
+      return product if product.title == title
     end
   end
 
